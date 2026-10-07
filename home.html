@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+
+    <title>Student Attendance System</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <style>
+
+        body {
+            background-color: #f5f5f5;
+        }
+
+        .header {
+            margin-top: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .student-card {
+            margin-bottom: 20px;
+        }
+
+        .percentage {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+
+        <h1>Student Attendance Management System</h1>
+
+        <p class="text-muted">
+            Search and view student attendance
+        </p>
+
+    </div>
+
+
+    <div class="row mb-4">
+
+        <div class="col-md-6 mx-auto">
+
+            <input
+                type="text"
+                id="search"
+                class="form-control"
+                placeholder="Search student by name">
+
+        </div>
+
+    </div>
+
+
+    <div id="students" class="row"></div>
+
+</div>
+
+
+<script>
+
+function loadStudents(search = '') {
+
+    fetch(`/api/students/?search=${search}`)
+
+    .then(response => response.json())
+
+    .then(data => {
+
+        let html = '';
+
+        data.forEach(student => {
+
+            html += `
+
+            <div class="col-md-4 student-card">
+
+                <div class="card shadow">
+
+                    <div class="card-body">
+
+                        <h5 class="card-title">
+                            ${student.name}
+                        </h5>
+
+                        <p>
+                            <strong>Roll No:</strong>
+                            ${student.roll_no}
+                        </p>
+
+                        <p>
+                            <strong>Course:</strong>
+                            ${student.course}
+                        </p>
+
+                        <p>
+                            <strong>Email:</strong>
+                            ${student.email}
+                        </p>
+
+                        <p class="percentage">
+                            Attendance:
+                            ${student.attendance}%
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            `;
+
+        });
+
+        document.getElementById('students').innerHTML = html;
+
+    });
+
+}
+
+
+document.getElementById('search')
+.addEventListener('keyup', function() {
+
+    loadStudents(this.value);
+
+});
+
+
+loadStudents();
+
+</script>
+
+</body>
+
+</html>
