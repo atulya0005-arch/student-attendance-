@@ -52,7 +52,6 @@ python manage.py migrate
 python manage.py createsuperuser
 Start the server
 python manage.py runserver
-Open in your browser: http://127.0.0.1:8000/ Admin panel: http://127.0.0.1:8000/admin/
 Pages
 URL	Page
 /	List of students
@@ -66,6 +65,4 @@ View: contains the logic and fetches data
 Template: HTML pages shown to the user
 URLs: connect each address to a view
 Author
-Anmol Singh GitHub: AnmolSingh1807Attendance Tracker - Django web app to manage student attendance. Features: add and delete students, mark Present/Absent, attendance report with percentage. How to run: pip install django, python manage.py migrate, python manage.py runserver
 
-OPEN:- http://127.0.0.1:8000/
