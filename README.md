@@ -38,7 +38,7 @@ Student: name, roll_no (unique)
 Attendance: student (ForeignKey), date, status (P/A), unique per student per date
 How to Run Locally
 Clone the repository
-git clone https://github.com/AnmolSingh1807/attendance-tracker.git
+git clone (https://github.com/atulya0005-arch/student-attendance-)
 cd attendance-tracker
 Create and activate a virtual environment (Windows)
 python -m venv venv
